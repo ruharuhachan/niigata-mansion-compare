@@ -37,6 +37,7 @@ for (const listing of PUBLIC_LISTINGS) {
 
 const housingPlaces: MapPlace[] = [...housingGroups.entries()].map(([key, listings]) => {
   const latest = [...listings].sort((a, b) => b.observedOn.localeCompare(a.observedOn))[0];
+  const listingTypes = [...new Set(listings.map((listing) => listing.listingType))].join("・");
   const prices = listings.map((listing) => listing.price);
   const unitPrices = listings.map(unitPrice);
   const priceLabel = Math.min(...prices) === Math.max(...prices)
@@ -54,12 +55,12 @@ const housingPlaces: MapPlace[] = [...housingGroups.entries()].map(([key, listin
     address: latest.address,
     longitude: latest.longitude,
     latitude: latest.latitude,
-    lead: `${latest.station}駅への距離、築年、売出し価格を観測ログとして比較するマンション。`,
+    lead: `${listingTypes}の公開売出し情報。最寄りの${latest.station}、築年、価格を観測ログとして比較。`,
     facts: [
+      { label: "種別", value: listingTypes },
       { label: "観測価格", value: priceLabel },
       { label: "㎡単価", value: unitLabel },
-      { label: "築年", value: `${latest.builtYear}年` },
-      { label: "観測", value: `${listings.length}件` },
+      { label: "築年 / 観測", value: `${latest.builtYear}年・${listings.length}件` },
     ],
     sourceUrl: latest.sourceUrl,
     sourceLabel: "公開売出し情報",

@@ -12,12 +12,20 @@ const COLORS: Record<PublicListing["neighborhood"], string> = {
   駅南: "#d96549",
   万代: "#d5a72d",
   関屋: "#526c82",
+  "古町・白山": "#7c5b92",
+  "上所・女池": "#bb6b4a",
+  東区: "#4f7897",
+  西区: "#568069",
+  江南区: "#a06b2d",
 };
 
 const shortName = (name: string) =>
   name
     .replace("アイコニックタワー新潟ステーション", "アイコニックタワー")
     .replace("ダイアパレスシアース万代", "シアース万代")
+    .replace("ザ・サーパスタワー新潟万代シテイ", "サーパスタワー万代")
+    .replace("ユートピアレジデンス南紫竹B棟", "ユートピア南紫竹")
+    .replace("グリーンタウン東新潟壱号館", "グリーンタウン東新潟")
     .replace("アパガーデンプレイス新潟駅", "アパガーデンプレイス");
 
 export default function HousingScatter({ listings }: { listings: PublicListing[] }) {
@@ -116,7 +124,7 @@ export default function HousingScatter({ listings }: { listings: PublicListing[]
       .attr("class", "d3-point")
       .attr("tabindex", 0)
       .attr("role", "button")
-      .attr("aria-label", (d) => `${d.name}、${d.price.toLocaleString("ja-JP")}万円、${d.area}平方メートル`)
+      .attr("aria-label", (d) => `${d.listingType}、${d.name}、${d.price.toLocaleString("ja-JP")}万円、${d.area}平方メートル`)
       .attr("transform", (d) => `translate(${x(xValue(d))},${y(yValue(d))})`)
       .on("mouseenter focus", (_, d) => setHovered(d))
       .on("mouseleave blur", () => setHovered(null));
@@ -141,7 +149,10 @@ export default function HousingScatter({ listings }: { listings: PublicListing[]
     }
   }, [listings, mode, visible, width]);
 
-  const neighborhoods: Neighborhood[] = ["すべて", "駅前", "駅南", "万代", "関屋"];
+  const neighborhoods: Neighborhood[] = [
+    "すべて",
+    ...(Object.keys(COLORS) as PublicListing["neighborhood"][]),
+  ];
 
   return (
     <div className="d3-shell">
@@ -163,7 +174,7 @@ export default function HousingScatter({ listings }: { listings: PublicListing[]
         <svg ref={svgRef} />
         <div className={`d3-tooltip ${hovered ? "visible" : ""}`} aria-live="polite">
           {hovered && <>
-            <span>{hovered.neighborhood} / {hovered.observedOn.replaceAll("-", ".")}</span>
+            <span>{hovered.listingType}・{hovered.neighborhood} / {hovered.observedOn.replaceAll("-", ".")}</span>
             <b>{hovered.name}</b>
             <strong>{hovered.price.toLocaleString("ja-JP")}万円</strong>
             <small>{hovered.layout}・{hovered.area}㎡・{hovered.station}駅 徒歩{hovered.stationMinutes}分<br />{unitPrice(hovered).toFixed(1)}万円/㎡・築{hovered.builtYear}年</small>

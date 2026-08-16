@@ -473,11 +473,11 @@ export default function HousingPage() {
         <div className="database-heading">
           <div>
             <p className="database-breadcrumb"><a href={sitePath("/")}>移住トップ</a><span>/</span>住まい公開DB</p>
-            <div className="eyebrow"><span>OPEN HOUSING OBSERVATORY</span><b>NIIGATA CHUO</b></div>
+            <div className="eyebrow"><span>OPEN HOUSING OBSERVATORY</span><b>NIIGATA CITY</b></div>
             <h1>公開情報を、<br /><em>相場観</em>に変える。</h1>
           </div>
           <div className="database-intro">
-            <p>中古マンションの公開ページを、観測した時点のスナップショットとして記録。D3.jsで数字の関係を動かしながら、内見前の比較軸をつくります。</p>
+            <p>新潟市内の新築・未入居・中古マンションを、公開ページ確認時点のスナップショットとして記録。D3.jsで数字の関係を動かしながら、内見前の比較軸をつくります。</p>
             <div><b>{String(PUBLIC_LISTINGS.length).padStart(2, "0")}</b><span>OBSERVATIONS<br /><small>掲載終了を含む観測ログ</small></span></div>
           </div>
         </div>
@@ -495,7 +495,7 @@ export default function HousingPage() {
               <tbody>
                 {PUBLIC_LISTINGS.map((listing) => (
                   <tr key={listing.id}>
-                    <th><b>{listing.name}</b><small>{listing.neighborhood}</small></th>
+                    <th><b>{listing.name}</b><small>{listing.listingType}・{listing.neighborhood}</small></th>
                     <td><strong>{listing.price.toLocaleString("ja-JP")}</strong>万円</td>
                     <td>{listing.area}㎡<small>{listing.layout}</small></td>
                     <td>{publicUnitPrice(listing).toFixed(1)}万円</td>
@@ -507,7 +507,7 @@ export default function HousingPage() {
               </tbody>
             </table>
           </div>
-          <p className="database-disclaimer">このデータベースは不動産在庫を網羅するものではなく、公開ページを確認した時点の観測記録です。同一建物の別住戸を含みます。価格、面積、駅距離等は掲載元表記を整理しており、売買の勧誘・仲介を目的としません。</p>
+          <p className="database-disclaimer">このデータベースは不動産在庫を網羅するものではなく、公開ページを確認した時点の観測記録です。新築には完成後未入居を含み、同一建物の別住戸も含みます。価格、面積、駅距離等は掲載元表記を整理しています。地図座標は住所の代表点で、売買の勧誘・仲介を目的としません。</p>
         </div>
       </section>
 
