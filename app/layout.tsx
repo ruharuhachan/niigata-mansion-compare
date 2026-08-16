@@ -3,8 +3,8 @@ import { sitePath } from "./site-path";
 import "./globals.css";
 
 export const metadata: Metadata = {
-  title: "NIIGATA SHIFT｜新潟移住の非公式リサーチガイド",
-  description: "暮らし・エリア・住まい・街の変化を公開情報から読み解く、新潟移住の非公式リサーチサイト。",
+  title: "NIIGATA LIFE ATLAS｜新潟生活観測所",
+  description: "移住する前に、暮らしを観測する。住まい、食、移動、冬、支援制度を公開情報から読み解く、新潟移住の非公式リサーチサイト。",
   other: {
     "codex-preview": "development",
   },
@@ -21,7 +21,20 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ja">
-      <body className="antialiased">{children}</body>
+      <body className="antialiased">
+        {children}
+        <a
+          className="pairing-lab-orbit"
+          href="https://ruharuhachan.github.io/niigata-pairing-lab/"
+          target="_blank"
+          rel="noreferrer"
+          aria-label="新潟ペアリングラボを新しいタブで開く"
+        >
+          <small>ANOTHER PROJECT</small>
+          <strong>新潟<br />ペアリング<br />ラボ</strong>
+          <span aria-hidden="true">↗</span>
+        </a>
+      </body>
     </html>
   );
 }

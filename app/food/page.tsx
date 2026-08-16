@@ -1,4 +1,3 @@
-/* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from "next";
 import { sitePath } from "../site-path";
 import RestaurantResearch from "../components/RestaurantResearch";
@@ -15,15 +14,15 @@ export default function FoodPage() {
   return (
     <main className="food-page">
       <header className="site-header portal-header food-header">
-        <a className="brand portal-brand" href={sitePath("/")} aria-label="NIIGATA SHIFT 移住トップへ">
+        <a className="brand portal-brand" href={sitePath("/")} aria-label="NIIGATA LIFE ATLAS 移住トップへ">
           <span className="shift-mark" aria-hidden="true">N</span>
-          <span>NIIGATA SHIFT<small>UNOFFICIAL</small></span>
+          <span>NIIGATA LIFE ATLAS<small>新潟生活観測所</small></span>
         </a>
         <nav aria-label="ページナビゲーション">
           <a href={sitePath("/")}>移住トップ</a>
+          <a href={sitePath("/housing")}>住まい</a>
           <a href={sitePath("/map")}>地図</a>
-          <a href="#research">店を探す</a>
-          <a href="#policy">掲載基準</a>
+          <a href={sitePath("/relocation")}>移住準備</a>
         </nav>
         <a className="button button-primary header-add" href={sitePath("/housing")}>住まいDB →</a>
       </header>
@@ -72,7 +71,7 @@ export default function FoodPage() {
       </section>
 
       <footer className="portal-footer">
-        <a className="brand portal-brand footer-brand" href={sitePath("/")}><span className="shift-mark">N</span><span>NIIGATA SHIFT<small>UNOFFICIAL</small></span></a>
+        <a className="brand portal-brand footer-brand" href={sitePath("/")}><span className="shift-mark">N</span><span>NIIGATA LIFE ATLAS<small>新潟生活観測所</small></span></a>
         <p>NIIGATA CITY TABLE / SOURCE-LED FOOD NOTES</p>
         <a href="#top">ページ上部へ ↑</a>
       </footer>

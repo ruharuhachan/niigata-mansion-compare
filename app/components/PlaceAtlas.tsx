@@ -85,6 +85,19 @@ export default function PlaceAtlas({ places }: { places: MapPlace[] }) {
     food: true,
   });
 
+  useEffect(() => {
+    const category = new URLSearchParams(window.location.search).get("category") as MapCategory | null;
+    if (!category || !CATEGORY_ORDER.includes(category)) return;
+    const timer = window.setTimeout(() => {
+      setActiveKinds({
+        housing: category === "housing",
+        brewery: category === "brewery",
+        food: category === "food",
+      });
+    }, 0);
+    return () => window.clearTimeout(timer);
+  }, []);
+
   const visible = useMemo(() => {
     const normalized = query.trim().toLocaleLowerCase("ja");
     return places.filter((place) => {
@@ -120,7 +133,7 @@ export default function PlaceAtlas({ places }: { places: MapPlace[] }) {
       .attr("viewBox", `0 0 ${width} ${height}`)
       .attr("role", "img")
       .attr("aria-label", "新潟市のマンション、酒蔵、飲食店を切り替えて探索する地図");
-    svg.append("title").text("NIIGATA SHIFT 生活地点マップ");
+    svg.append("title").text("NIIGATA LIFE ATLAS 生活地点マップ");
 
     const tileLayer = svg.append("g").attr("class", "atlas-tile-layer");
     const leaderLayer = svg.append("g").attr("class", "atlas-leader-layer");
