@@ -33,7 +33,7 @@ export type PublicListing = {
  * 現在も販売中であることを示す在庫一覧ではありません。
  * 緯度経度は公開住所の代表点で、住戸や入口の正確な位置を示しません。
  */
-export const PUBLIC_LISTINGS: PublicListing[] = [
+export const PUBLIC_LISTINGS: PublicListing[] = ([
   {
     "id": "surpass-tower-bandai-c-3480",
     "name": "ザ・サーパスタワー新潟万代シテイ",
@@ -561,7 +561,7 @@ export const PUBLIC_LISTINGS: PublicListing[] = [
     "observedOn": "2026-07-23",
     "sourceUrl": "https://suumo.jp/ms/chuko/niigata/sc_niigatashichuo/nc_78659054/"
   }
-].sort((a, b) =>
+] satisfies PublicListing[]).sort((a, b) =>
   b.observedOn.localeCompare(a.observedOn)
   || a.name.localeCompare(b.name, "ja")
   || a.price - b.price,
