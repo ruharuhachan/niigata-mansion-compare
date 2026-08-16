@@ -1,6 +1,7 @@
 "use client";
 
 import * as d3 from "d3";
+import { sitePath } from "../site-path";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { MAP_CATEGORY_META, MapCategory, MapPlace } from "../data/places";
 
@@ -325,7 +326,7 @@ export default function PlaceAtlas({ places }: { places: MapPlace[] }) {
                 </div>
                 <address>{selected.address}</address>
                 <div className="atlas-selected-links">
-                  <a href={selected.detailUrl} target={selected.detailUrl.startsWith("http") ? "_blank" : undefined} rel={selected.detailUrl.startsWith("http") ? "noreferrer" : undefined}>詳しく見る →</a>
+                  <a href={sitePath(selected.detailUrl)} target={selected.detailUrl.startsWith("http") ? "_blank" : undefined} rel={selected.detailUrl.startsWith("http") ? "noreferrer" : undefined}>詳しく見る →</a>
                   <a href={selected.sourceUrl} target="_blank" rel="noreferrer">参照元 ↗</a>
                 </div>
               </>

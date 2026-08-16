@@ -1,3 +1,4 @@
+import { sitePath } from "./site-path";
 import { PUBLIC_LISTINGS, unitPrice } from "./data/public-listings";
 import { RESTAURANTS } from "./data/restaurants";
 import { MAP_CATEGORY_META, MAP_PLACES, MapCategory } from "./data/places";
@@ -52,11 +53,11 @@ export default function Home() {
         <nav aria-label="メインナビゲーション">
           <a href="#areas">エリア</a>
           <a href="#life">暮らし</a>
-          <a href="/map">地図</a>
-          <a href="/food">食</a>
+          <a href={sitePath("/map")}>地図</a>
+          <a href={sitePath("/food")}>食</a>
           <a href="#method">このサイトについて</a>
         </nav>
-        <a className="button button-primary header-add" href="/housing">住まいデータを見る →</a>
+        <a className="button button-primary header-add" href={sitePath("/housing")}>住まいデータを見る →</a>
       </header>
 
       <section className="portal-hero" id="top">
@@ -67,7 +68,7 @@ export default function Home() {
           <p className="portal-lead">観光の延長ではなく、毎日の移動、冬、住まい、街の変化まで。新潟移住を自分の条件で考えるための、非公式リサーチノートです。</p>
           <div className="portal-actions">
             <a className="button button-primary" href="#start">移住の論点から見る</a>
-            <a className="button button-ghost" href="/map">生活地点マップ</a>
+            <a className="button button-ghost" href={sitePath("/map")}>生活地点マップ</a>
           </div>
         </div>
         <aside className="portal-coordinate" aria-label="サイトの4つの視点">
@@ -137,12 +138,12 @@ export default function Home() {
           <p className="kicker">NIIGATA LIFE ATLAS / 03</p>
           <h2>住まいと、<br />食と、酒を重ねる。</h2>
           <p>マンションの位置だけでは生活は見えません。D3.jsの地図に、都会の人へ薦めたい店と新潟市の酒蔵を重ね、平日と休日の距離を一つの画面で見ます。</p>
-          <a className="button button-primary" href="/map">D3.jsの生活地図を開く →</a>
+          <a className="button button-primary" href={sitePath("/map")}>D3.jsの生活地図を開く →</a>
         </div>
         <div className="atlas-home-index">
           <div className="atlas-home-total"><span>OBSERVED PLACES</span><strong>{String(MAP_PLACES.length).padStart(2, "0")}</strong><small>住所・座標・出典・観測日つき</small></div>
           {(["housing", "brewery", "food"] as MapCategory[]).map((kind, index) => (
-            <a href="/map" key={kind}>
+            <a href={sitePath("/map")} key={kind}>
               <span>0{index + 1}</span>
               <i style={{ background: MAP_CATEGORY_META[kind].color }} />
               <b>{MAP_CATEGORY_META[kind].label}</b>
@@ -157,7 +158,7 @@ export default function Home() {
           <p className="kicker">NIIGATA CITY TABLE / 04</p>
           <h2>“ご当地グルメ”より、<br />誰が、なぜ作るか。</h2>
           <p>料理人の経歴、店の思想、公開インタビューを起点に、都会の同価格帯と比べても行く理由がある新潟市の店を調べます。</p>
-          <a className="button button-primary" href="/food">食のリサーチを開く →</a>
+          <a className="button button-primary" href={sitePath("/food")}>食のリサーチを開く →</a>
         </div>
         <div className="food-home-index">
           {RESTAURANTS.slice(0, 3).map((restaurant, index) => (
@@ -177,7 +178,7 @@ export default function Home() {
           <p className="kicker">OPEN HOUSING OBSERVATORY / 05</p>
           <h2>公開情報を、<br />比較できるデータへ。</h2>
           <p>中古マンションの公開ページを観測時点の記録として整理。D3.jsで駅距離・㎡単価・広さ・価格の関係を動かして見られます。</p>
-          <a className="button button-primary" href="/housing">公開DBと比較ツールを開く →</a>
+          <a className="button button-primary" href={sitePath("/housing")}>公開DBと比較ツールを開く →</a>
         </div>
         <div className="housing-stats">
           <div><span>OBSERVATIONS</span><strong>{String(PUBLIC_LISTINGS.length).padStart(2, "0")}</strong><small>公開情報の観測件数</small></div>

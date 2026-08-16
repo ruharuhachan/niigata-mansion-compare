@@ -1,6 +1,7 @@
 "use client";
 /* eslint-disable @next/next/no-html-link-for-pages */
 
+import { sitePath } from "../site-path";
 import { ChangeEvent, FormEvent, useEffect, useMemo, useRef, useState } from "react";
 import HousingScatter from "../components/HousingScatter";
 import { PUBLIC_LISTINGS, unitPrice as publicUnitPrice } from "../data/public-listings";
@@ -453,13 +454,13 @@ export default function HousingPage() {
   return (
     <main className="housing-page">
       <header className="site-header">
-        <a className="brand portal-brand" href="/" aria-label="NIIGATA SHIFT 移住トップへ">
+        <a className="brand portal-brand" href={sitePath("/")} aria-label="NIIGATA SHIFT 移住トップへ">
           <span className="shift-mark" aria-hidden="true">N</span>
           <span>NIIGATA SHIFT<small>UNOFFICIAL</small></span>
         </a>
         <nav aria-label="ページ内ナビゲーション">
-          <a href="/map">地図</a>
-          <a href="/food">食</a>
+          <a href={sitePath("/map")}>地図</a>
+          <a href={sitePath("/food")}>食</a>
           <a href="#database">公開DB</a>
           <a href="#compare">自分で比較</a>
           <a href="#payment">支払い</a>
@@ -471,7 +472,7 @@ export default function HousingPage() {
       <section className="database-hero" id="database">
         <div className="database-heading">
           <div>
-            <p className="database-breadcrumb"><a href="/">移住トップ</a><span>/</span>住まい公開DB</p>
+            <p className="database-breadcrumb"><a href={sitePath("/")}>移住トップ</a><span>/</span>住まい公開DB</p>
             <div className="eyebrow"><span>OPEN HOUSING OBSERVATORY</span><b>NIIGATA CHUO</b></div>
             <h1>公開情報を、<br /><em>相場観</em>に変える。</h1>
           </div>
@@ -759,7 +760,7 @@ export default function HousingPage() {
         <p className="disclaimer">掲載情報を2026年8月16日時点で整理した個人用の比較補助です。売出し状況・価格・管理費等は変動します。購入判断は最新の販売図面、重要事項説明書、管理規約、長期修繕計画、総会議事録、ハザード情報、住宅ローン審査結果を確認して行ってください。</p>
       </section>
 
-      <footer><a className="brand portal-brand footer-brand" href="/"><span className="shift-mark" aria-hidden="true">N</span><span>NIIGATA SHIFT<small>UNOFFICIAL</small></span></a><p>Make the trade-offs visible.</p><a href="#database">ページ上部へ ↑</a></footer>
+      <footer><a className="brand portal-brand footer-brand" href={sitePath("/")}><span className="shift-mark" aria-hidden="true">N</span><span>NIIGATA SHIFT<small>UNOFFICIAL</small></span></a><p>Make the trade-offs visible.</p><a href="#database">ページ上部へ ↑</a></footer>
 
       {editorOpen && (
         <div className="modal-backdrop" role="presentation" onMouseDown={(event) => { if (event.target === event.currentTarget) setEditorOpen(false); }}>

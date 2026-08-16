@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from "next";
+import { sitePath } from "../site-path";
 import RestaurantResearch from "../components/RestaurantResearch";
 import { RESTAURANTS } from "../data/restaurants";
 
@@ -14,22 +15,22 @@ export default function FoodPage() {
   return (
     <main className="food-page">
       <header className="site-header portal-header food-header">
-        <a className="brand portal-brand" href="/" aria-label="NIIGATA SHIFT 移住トップへ">
+        <a className="brand portal-brand" href={sitePath("/")} aria-label="NIIGATA SHIFT 移住トップへ">
           <span className="shift-mark" aria-hidden="true">N</span>
           <span>NIIGATA SHIFT<small>UNOFFICIAL</small></span>
         </a>
         <nav aria-label="ページナビゲーション">
-          <a href="/">移住トップ</a>
-          <a href="/map">地図</a>
+          <a href={sitePath("/")}>移住トップ</a>
+          <a href={sitePath("/map")}>地図</a>
           <a href="#research">店を探す</a>
           <a href="#policy">掲載基準</a>
         </nav>
-        <a className="button button-primary header-add" href="/housing">住まいDB →</a>
+        <a className="button button-primary header-add" href={sitePath("/housing")}>住まいDB →</a>
       </header>
 
       <section className="food-hero" id="top">
         <div className="food-hero-copy">
-          <p className="database-breadcrumb"><a href="/">移住トップ</a><span>/</span>食のリサーチ</p>
+          <p className="database-breadcrumb"><a href={sitePath("/")}>移住トップ</a><span>/</span>食のリサーチ</p>
           <div className="food-overline"><span>CITY TABLE / INDEPENDENT FOOD RESEARCH</span><b>NIIGATA</b></div>
           <h1>名物ではなく、<br /><em>料理人</em>で選ぶ。</h1>
           <p>都会の舌を捨てなくていい。料理人の修業歴、店の思想、新潟で作る必然性まで調べて、わざわざ行く理由のある店だけを集めます。</p>
@@ -71,7 +72,7 @@ export default function FoodPage() {
       </section>
 
       <footer className="portal-footer">
-        <a className="brand portal-brand footer-brand" href="/"><span className="shift-mark">N</span><span>NIIGATA SHIFT<small>UNOFFICIAL</small></span></a>
+        <a className="brand portal-brand footer-brand" href={sitePath("/")}><span className="shift-mark">N</span><span>NIIGATA SHIFT<small>UNOFFICIAL</small></span></a>
         <p>NIIGATA CITY TABLE / SOURCE-LED FOOD NOTES</p>
         <a href="#top">ページ上部へ ↑</a>
       </footer>

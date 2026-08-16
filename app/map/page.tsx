@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-html-link-for-pages */
 import type { Metadata } from "next";
+import { sitePath } from "../site-path";
 import PlaceAtlas from "../components/PlaceAtlas";
 import { MAP_CATEGORY_META, MAP_PLACES, MapCategory } from "../data/places";
 
@@ -14,14 +15,14 @@ export default function MapPage() {
   return (
     <main className="map-page">
       <header className="site-header portal-header map-header">
-        <a className="brand portal-brand" href="/" aria-label="NIIGATA SHIFT 移住トップへ">
+        <a className="brand portal-brand" href={sitePath("/")} aria-label="NIIGATA SHIFT 移住トップへ">
           <span className="shift-mark" aria-hidden="true">N</span>
           <span>NIIGATA SHIFT<small>UNOFFICIAL</small></span>
         </a>
         <nav aria-label="ページナビゲーション">
-          <a href="/">移住トップ</a>
-          <a href="/housing">住まい</a>
-          <a href="/food">食</a>
+          <a href={sitePath("/")}>移住トップ</a>
+          <a href={sitePath("/housing")}>住まい</a>
+          <a href={sitePath("/food")}>食</a>
           <a href="#method">地図の読み方</a>
         </nav>
         <a className="button button-primary header-add" href="#atlas">地図を探索 →</a>
@@ -29,7 +30,7 @@ export default function MapPage() {
 
       <section className="map-hero" id="top">
         <div className="map-hero-copy">
-          <p className="database-breadcrumb"><a href="/">移住トップ</a><span>/</span>生活地点マップ</p>
+          <p className="database-breadcrumb"><a href={sitePath("/")}>移住トップ</a><span>/</span>生活地点マップ</p>
           <div className="map-overline"><span>D3.JS / MULTI-LAYER CITY RESEARCH</span><b>NIIGATA</b></div>
           <h1>街の魅力を、<br /><em>点ではなく距離</em>で見る。</h1>
           <p>住まい、食、酒蔵を別々のリストにしない。日常の拠点と、休日に足を延ばす目的地を同じ地図へ重ねて、新潟でどんな生活圏をつくれるかを考えます。</p>
@@ -69,7 +70,7 @@ export default function MapPage() {
       </section>
 
       <footer className="portal-footer">
-        <a className="brand portal-brand footer-brand" href="/"><span className="shift-mark">N</span><span>NIIGATA SHIFT<small>UNOFFICIAL</small></span></a>
+        <a className="brand portal-brand footer-brand" href={sitePath("/")}><span className="shift-mark">N</span><span>NIIGATA SHIFT<small>UNOFFICIAL</small></span></a>
         <p>NIIGATA LIFE ATLAS / D3.JS PLACE RESEARCH</p>
         <a href="#top">ページ上部へ ↑</a>
       </footer>
