@@ -30,16 +30,36 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install dependencies
         run: npm ci
-      - name: Build static site
+      - name: Build Niigata edition
         run: npx next build
         env:
-          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}
-      - name: Disable Jekyll
-        run: touch out/.nojekyll
+          NEXT_PUBLIC_BASE_PATH: ${{ steps.pages.outputs.base_path }}/niigata
+      - name: Assemble Life Atlas site
+        env:
+          PAGES_BASE_PATH: ${{ steps.pages.outputs.base_path }}
+        run: |
+          mkdir -p site/niigata
+          cp -a out/. site/niigata/
+          touch site/.nojekyll
+          cat > site/index.html <<EOF
+          <!doctype html>
+          <html lang="ja">
+            <head>
+              <meta charset="utf-8">
+              <meta name="viewport" content="width=device-width, initial-scale=1">
+              <meta http-equiv="refresh" content="0; url=${PAGES_BASE_PATH}/niigata/">
+              <link rel="canonical" href="${PAGES_BASE_PATH}/niigata/">
+              <title>LIFE ATLAS</title>
+            </head>
+            <body>
+              <p><a href="${PAGES_BASE_PATH}/niigata/">新潟版へ移動します</a></p>
+            </body>
+          </html>
+          EOF
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v4
         with:
-          path: ./out
+          path: ./site
 
   deploy:
     environment:
