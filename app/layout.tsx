@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { sitePath } from "./site-path";
 import "./globals.css";
 import "./modern-home.css";
+import "./support-home-fix.css";
 
 export const metadata: Metadata = {
   title: "NIIGATA LIFE ATLAS｜新潟生活観測所",
