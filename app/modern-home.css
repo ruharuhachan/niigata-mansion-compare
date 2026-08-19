@@ -1,0 +1,342 @@
+/* Photo-led editorial direction for NIIGATA LIFE ATLAS. */
+
+.atlas-portal-page {
+  --ink: #20221d;
+  --ink-soft: #4f5549;
+  --paper: #f7f2e8;
+  --cream: #eee8dc;
+  --cream-deep: #ded6c7;
+  --line: #cfc8bb;
+  --teal: #626d42;
+  --teal-dark: #48522f;
+  --teal-pale: #e6e8dc;
+  --coral: #b24b45;
+  --gold: #b39a55;
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.atlas-site-header {
+  height: 72px;
+  border-bottom-color: rgba(32, 34, 29, 0.12);
+  background: rgba(247, 242, 232, 0.88);
+  backdrop-filter: blur(20px) saturate(120%);
+}
+
+.atlas-site-header .shift-mark {
+  background: var(--ink);
+  color: var(--paper);
+}
+
+.atlas-site-header .button-primary {
+  border-color: var(--ink);
+  background: var(--ink);
+  box-shadow: none;
+}
+
+.atlas-site-header .button-primary:hover {
+  background: var(--teal-dark);
+}
+
+.atlas-portal-hero {
+  position: relative;
+  display: grid;
+  min-height: calc(100svh - 72px);
+  grid-template-columns: minmax(360px, 0.78fr) minmax(560px, 1.22fr);
+  align-items: stretch;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(32, 34, 29, 0.22);
+  background:
+    radial-gradient(circle at 10% 12%, rgba(255,255,255,.8), transparent 26%),
+    linear-gradient(135deg, #f8f4eb 0%, #eee7da 100%);
+  isolation: isolate;
+}
+
+.atlas-portal-hero::before {
+  position: absolute;
+  z-index: 0;
+  top: clamp(34px, 5vh, 62px);
+  right: clamp(30px, 4.3vw, 72px);
+  bottom: clamp(34px, 5vh, 62px);
+  left: 43%;
+  border: 1px solid rgba(32, 34, 29, 0.14);
+  background-color: #efe9dd;
+  background-image: var(--life-atlas-hero);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  box-shadow: 0 30px 80px rgba(45, 42, 34, 0.10);
+  content: "";
+}
+
+.atlas-portal-hero::after {
+  position: absolute;
+  z-index: 1;
+  right: clamp(42px, 5.2vw, 88px);
+  bottom: clamp(46px, 6vh, 78px);
+  padding: 8px 11px;
+  background: rgba(247, 242, 232, 0.86);
+  color: rgba(32, 34, 29, 0.76);
+  content: "NIIGATA CITY  /  LIFE ATLAS 001";
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .16em;
+  backdrop-filter: blur(10px);
+}
+
+.atlas-portal-copy {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  min-width: 0;
+  flex-direction: column;
+  justify-content: center;
+  padding: clamp(70px, 9vh, 116px) clamp(30px, 5.2vw, 82px);
+}
+
+.atlas-portal-copy::after {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: -90px;
+  bottom: 0;
+  width: 160px;
+  background: linear-gradient(90deg, rgba(247,242,232,1), rgba(247,242,232,0));
+  content: "";
+  pointer-events: none;
+}
+
+.atlas-portal-copy .portal-overline {
+  max-width: 510px;
+  padding-bottom: 13px;
+  border-bottom: 1px solid rgba(32, 34, 29, 0.24);
+  color: #6e735f;
+}
+
+.atlas-portal-copy .portal-overline b {
+  color: var(--teal-dark);
+}
+
+.atlas-portal-kana {
+  margin-top: 30px;
+  color: #757766;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .20em;
+}
+
+.atlas-portal-copy h1 {
+  max-width: 660px;
+  margin: 18px 0 24px;
+  color: var(--ink);
+  font-family: "Yu Mincho", "Hiragino Mincho ProN", serif;
+  font-size: clamp(54px, 5.5vw, 94px);
+  font-weight: 500;
+  letter-spacing: -.065em;
+  line-height: 1.03;
+}
+
+.atlas-portal-copy h1 span,
+.atlas-portal-copy h1 em {
+  display: block;
+}
+
+.atlas-portal-copy h1 em {
+  margin-top: .10em;
+  color: var(--teal-dark);
+  font-style: normal;
+}
+
+.atlas-portal-lead {
+  max-width: 520px;
+  color: var(--ink-soft);
+  font-size: 14px;
+  line-height: 2.05;
+}
+
+.atlas-portal-copy .portal-actions {
+  margin-top: 30px;
+}
+
+.atlas-portal-copy .button {
+  min-height: 47px;
+  border-radius: 0;
+  box-shadow: none;
+}
+
+.atlas-portal-copy .button-primary {
+  border-color: var(--ink);
+  background: var(--ink);
+}
+
+.atlas-portal-copy .button-primary:hover {
+  background: var(--teal-dark);
+}
+
+.atlas-portal-copy .button-ghost {
+  border-color: rgba(32, 34, 29, .32);
+  background: rgba(247, 242, 232, .66);
+  backdrop-filter: blur(8px);
+}
+
+.atlas-portal-note {
+  margin-top: 30px !important;
+  color: #777968 !important;
+  font-size: 9px !important;
+  letter-spacing: .12em;
+}
+
+/* The photo becomes the second hero voice; the topic index continues immediately below. */
+.atlas-portal-menu {
+  display: none;
+}
+
+.topic-hub,
+.decision-route,
+.support-home-preview,
+.atlas-home-preview,
+.area-section,
+.method-section {
+  background-color: var(--paper);
+}
+
+.topic-hub {
+  border-top: 0;
+}
+
+.topic-card,
+.area-card,
+.support-home-list a {
+  border-radius: 0 !important;
+}
+
+.topic-card {
+  transition: transform 180ms ease, background 180ms ease;
+}
+
+.topic-card:hover {
+  transform: translateY(-5px);
+}
+
+.topic-card h3,
+.area-card h3,
+.topic-hub-heading h2,
+.decision-route h2,
+.support-home-preview h2,
+.atlas-home-preview h2,
+.portal-heading h2,
+.method-section h2 {
+  text-wrap: balance;
+}
+
+.atlas-observation-strip {
+  background: #25271f;
+}
+
+.portal-footer {
+  background: #e9e2d5;
+}
+
+@media (max-width: 1180px) {
+  .atlas-portal-hero {
+    grid-template-columns: minmax(330px, .82fr) minmax(470px, 1.18fr);
+  }
+
+  .atlas-portal-hero::before {
+    left: 41%;
+    right: 28px;
+  }
+
+  .atlas-portal-copy {
+    padding-right: 34px;
+  }
+}
+
+@media (max-width: 880px) {
+  .atlas-site-header {
+    height: 66px;
+  }
+
+  .atlas-portal-hero {
+    display: block;
+    min-height: auto;
+    padding-bottom: min(132vw, 760px);
+  }
+
+  .atlas-portal-hero::before {
+    top: auto;
+    right: 18px;
+    bottom: 22px;
+    left: 18px;
+    height: min(124vw, 710px);
+    background-size: contain;
+  }
+
+  .atlas-portal-hero::after {
+    right: 30px;
+    bottom: 34px;
+    font-size: 8px;
+  }
+
+  .atlas-portal-copy {
+    padding: 64px 24px 52px;
+  }
+
+  .atlas-portal-copy::after {
+    display: none;
+  }
+
+  .atlas-portal-copy h1 {
+    max-width: 560px;
+    font-size: clamp(46px, 13vw, 74px);
+  }
+
+  .atlas-portal-lead {
+    max-width: 620px;
+    font-size: 14px;
+  }
+}
+
+@media (max-width: 560px) {
+  .atlas-portal-copy {
+    padding-top: 46px;
+  }
+
+  .atlas-portal-copy .portal-overline {
+    gap: 12px;
+    font-size: 8px;
+  }
+
+  .atlas-portal-kana {
+    margin-top: 24px;
+  }
+
+  .atlas-portal-copy h1 {
+    font-size: clamp(42px, 14vw, 62px);
+  }
+
+  .atlas-portal-copy .portal-actions {
+    display: grid;
+    grid-template-columns: 1fr;
+    width: 100%;
+  }
+
+  .atlas-portal-copy .button {
+    width: 100%;
+  }
+
+  .atlas-portal-hero {
+    padding-bottom: 139vw;
+  }
+
+  .atlas-portal-hero::before {
+    height: 132vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topic-card {
+    transition: none;
+  }
+}

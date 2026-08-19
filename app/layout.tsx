@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { sitePath } from "./site-path";
 import "./globals.css";
+import "./modern-home.css";
 
 export const metadata: Metadata = {
   title: "NIIGATA LIFE ATLAS｜新潟生活観測所",
@@ -22,6 +23,7 @@ export default function RootLayout({
   return (
     <html lang="ja">
       <body className="antialiased">
+        <style>{`:root { --life-atlas-hero: url("${sitePath("/niigata-city-hero.webp")}"); }`}</style>
         {children}
         <a
           className="pairing-lab-orbit"
