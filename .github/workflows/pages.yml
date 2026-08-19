@@ -30,6 +30,11 @@ jobs:
         uses: actions/configure-pages@v5
       - name: Install dependencies
         run: npm ci
+      - name: Restore hero image
+        run: |
+          cat assets/hero/part-*.b64 | tr -d '\n' | base64 --decode > public/niigata-city-hero.webp
+          test "$(head -c 4 public/niigata-city-hero.webp)" = "RIFF"
+          test "$(dd if=public/niigata-city-hero.webp bs=1 skip=8 count=4 2>/dev/null)" = "WEBP"
       - name: Build Niigata edition
         run: npx next build
         env:
