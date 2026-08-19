@@ -1,0 +1,76 @@
+/* High-contrast treatment for the Support Finder section. */
+
+.support-home-preview {
+  background: #293126 !important;
+  color: #fffdf7;
+}
+
+.support-home-preview .kicker {
+  color: #d7cfaa;
+}
+
+.support-home-intro h2 {
+  color: #fffdf7;
+}
+
+.support-home-intro > p:not(.kicker) {
+  color: rgba(255, 253, 247, 0.82);
+  font-size: 14px;
+  line-height: 1.95;
+}
+
+.support-home-intro > small {
+  color: rgba(255, 253, 247, 0.66);
+  font-size: 11px;
+  line-height: 1.7;
+}
+
+.support-home-list {
+  border-top-color: rgba(255, 253, 247, 0.24);
+  border-left-color: rgba(255, 253, 247, 0.24);
+}
+
+.support-home-list a {
+  min-height: 250px;
+  border-right-color: rgba(255, 253, 247, 0.24);
+  border-bottom-color: rgba(255, 253, 247, 0.24);
+  background: rgba(255, 253, 247, 0.035);
+}
+
+.support-home-list a:hover {
+  background: rgba(255, 253, 247, 0.09);
+}
+
+.support-home-list span {
+  color: #d7cfaa;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+}
+
+.support-home-list b {
+  margin: 38px 0 20px;
+  color: #fffdf7;
+  font-size: clamp(28px, 2.35vw, 36px);
+  line-height: 1.35;
+}
+
+.support-home-list small {
+  color: rgba(255, 253, 247, 0.72);
+  font-size: 11px;
+  line-height: 1.75;
+}
+
+@media (max-width: 880px) {
+  .support-home-preview {
+    gap: 44px;
+  }
+
+  .support-home-list a {
+    min-height: 205px;
+  }
+
+  .support-home-list b {
+    margin-top: 28px;
+  }
+}
